@@ -1,6 +1,14 @@
 require "readline"
 
-class mrdbg
+class Mrdbg
+
+def set_loglevel l
+	@loglevel = l
+end
+
+def initialize
+	@loglevel = 3
+end
 
 def set_red s
 	return "#{RED}#{s}#{COLOREND}"
@@ -25,7 +33,7 @@ def d(s)
 	puts "#{color_s}#{Time.new.strftime("%H:%M:%S")} line:#{line} -- #{s.to_s}#{color_f}"
 end
 def l(n,s)
-   	if n <= LOGLEVEL then
+   	if n <= @loglevel then
 		color_s = "\033[1m\033[34m"
 		color_f = "\033[0m\033[22m"
 		space = " " * n
